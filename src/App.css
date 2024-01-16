@@ -1,38 +1,95 @@
-.App {
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background-color: #000!important;
+}
+
+.custom-placeholder-color::placeholder {
+  color: #fff!important; /* Substitua pela cor desejada para o placeholder */
+}
+
+
+
+
+ul.pagination{
+  background-color: transparent!important;
+  --bs-pagination-bg: transparent;
+  --bs-pagination-focus-color: #e8b006;
+  /* --bs-pagination-hover-color:#e8b006; */
+  /* --bs-pagination-color:#e8b006; */
+  --bs-pagination-active-bg:#e8b006;
+  --bs-pagination-active-border-color: #e8b006;
+  /* --bs-pagination-border-color:#e8b006; */
+  --bs-pagination-hover-bg:#e8b006;
+  --bs-pagination-focus-box-shadow:0 0 0 0.25rem rgba(0, 0, 0, 0);
+  
+
+}
+
+ul.pagination a{
+  color: #fff;
+}
+
+.form-control:focus {
+  box-shadow: none!important; /* Remove o contorno de foco padrão */
+}
+
+.circular-div {
+  width: 40px;
+  height: 40px;
+  /* background-color: lightblue; */
+  border-radius: 50%; /* This property makes the div circular */
   text-align: center;
+  line-height: 100px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.focus-visible:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  /* border:none;
+  border-bottom: 1px solid #685ac9!important; */
+
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.image {
+  object-fit: cover; /* Garante que a imagem cubra todo o container */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.gradient-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; /* Ajuste conforme necessário */
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, hwb(0 0% 100%) 100%);
 }
 
-.App-link {
-  color: #61dafb;
+.card-conteudo{
+  border: 2px solid #000;
+  /* display: inline-block;
+  scroll-snap-align: start;
+  background-color: #ddd;
+  margin-right: 10px; */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.slick-next,.slick-prev{
+   display: none!important;
 }
+.slider-container {
+  width: 100%;
+  background-color: red;
+}
+/* .card-conteudo-lista{
+  overflow-x: scroll;
+  white-space: nowrap;
+  scroll-snap-type: x mandatory;
+  cursor: grab;
+}
+
+.card-conteudo-lista:active {
+  cursor: grabbing;
+} */
