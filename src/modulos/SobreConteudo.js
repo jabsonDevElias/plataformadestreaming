@@ -60,7 +60,7 @@ const SobreConteudo = () => {
             
               {/* <img src={`https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/${dados[0].backdrop_path}`} className='col-12 image' /> */}
               <div className='col-12 text-light' style={{height:"100vh",backgroundImage:`url(https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/${dados[0].backdrop_path})`,backgroundSize:"cover",backgroundPosition:"center"}}>
-                  <HeaderLogin className="z-1"/>
+                  <HeaderLogin className="position-relative z-1"/>
                   <div className='position-relative z-2 d-flex align-items-end ' style={{height:"100vh"}}>
                     <div className='fs-3 d-flex flex-column container mb-3 text-center text-md-start'>
                       <h1>{dados[0].title}</h1>
