@@ -3,6 +3,7 @@
 
 import React from 'react';
 import axios from 'axios';
+import HeaderLogin from './HeaderLogin';
 import { useParams} from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faPlayCircle, faStar } from '@fortawesome/free-solid-svg-icons';
@@ -60,14 +61,15 @@ const SobreConteudo = () => {
             
               {/* <img src={`https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/${dados[0].backdrop_path}`} className='col-12 image' /> */}
               <div className='col-12 text-light' style={{height:"100vh",backgroundImage:`url(https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/${dados[0].backdrop_path})`,backgroundSize:"cover",backgroundPosition:"center"}}>
+                  <HeaderLogin className="position-relative z-2"/>
                   <div className='position-relative z-1 d-flex align-items-end ' style={{height:"100vh"}}>
                     <hr className='bg-ligth'/>
-                    <div className='fs-3 d-flex flex-column container mb-3'>
+                    <div className='fs-3 d-flex flex-column container mb-3 text-center text-md-start'>
                       <h1>{dados[0].title}</h1>
-                      <div className='d-flex justify-content-around text-warning col-5 col-md-3'>
+                      <div className='d-flex justify-content-around text-warning col-5 col-md-3 m-auto m-md-0 m-md-2'>
                         {avalicao()}
                       </div>
-                      <div className='fs-3 d-flex mt-3 align-items-center justify-content-between col-5 col-md-1'>
+                      <div className='fs-3 d-flex mt-3 align-items-center justify-content-center justify-content-md-between col-5 m-auto m-md-0 mt-md-3 col-md-1'>
                        <button className='btn btn-outline-warning fs-5 fw-bolder me-4'>LEIA+</button>
                        <a href="#" className='text-warning fs-1'><FontAwesomeIcon  icon={faPlayCircle}/></a>
                     </div>
