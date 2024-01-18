@@ -6,7 +6,7 @@ import axios from 'axios';
 import HeaderLogin from './HeaderLogin';
 import { useParams} from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlayCircle, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faClose, faPlayCircle, faStar } from '@fortawesome/free-solid-svg-icons';
 
 
 const avalicao = () => {
@@ -60,7 +60,7 @@ const SobreConteudo = () => {
             
               {/* <img src={`https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/${dados[0].backdrop_path}`} className='col-12 image' /> */}
               <div className='col-12 text-light' style={{height:"100vh",backgroundImage:`url(https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/${dados[0].backdrop_path})`,backgroundSize:"cover",backgroundPosition:"center"}}>
-                  <HeaderLogin className="position-relative z-1"/>
+                  <HeaderLogin className="position-relative z-5"/>
                   <div className='position-relative z-2 d-flex align-items-end ' style={{height:"100vh"}}>
                     <div className='fs-3 d-flex flex-column container mb-3 text-center text-md-start'>
                       <h1>{dados[0].title}</h1>
@@ -85,7 +85,9 @@ const SobreConteudo = () => {
               <div className="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel" style={{background:"#000"}}>
                 <div className="offcanvas-header">
                   <h5 className="offcanvas-title text-light" id="offcanvasWithBothOptionsLabel"></h5>
-                  <button type="button" className="btn-close text-light z-2" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                  <a className="btn-close text-light z-2 fs-3" data-bs-dismiss="offcanvas" aria-label="Close" style={{cursor:"pointer"}}>
+                     <FontAwesomeIcon icon={faClose}/>
+                  </a>
                 </div>
                 <div className="offcanvas-body fw-light text-light">
                   <p style={{textAlign:"justify",textIndent:"1.5em"}}>{dados[0].overview}</p>
