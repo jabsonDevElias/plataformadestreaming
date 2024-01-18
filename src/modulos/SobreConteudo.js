@@ -6,7 +6,7 @@ import axios from 'axios';
 import HeaderLogin from './HeaderLogin';
 import { useParams} from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay, faPlayCircle, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faPlayCircle, faStar } from '@fortawesome/free-solid-svg-icons';
 
 
 const avalicao = () => {
@@ -45,7 +45,6 @@ const SobreConteudo = () => {
     
     }, [tipo, idfilme]); // Dependências do useEffect
     
-
   
 
   return (
@@ -61,16 +60,15 @@ const SobreConteudo = () => {
             
               {/* <img src={`https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/${dados[0].backdrop_path}`} className='col-12 image' /> */}
               <div className='col-12 text-light' style={{height:"100vh",backgroundImage:`url(https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/${dados[0].backdrop_path})`,backgroundSize:"cover",backgroundPosition:"center"}}>
-                  <HeaderLogin className="position-relative z-2"/>
-                  <div className='position-relative z-1 d-flex align-items-end ' style={{height:"100vh"}}>
-                    <hr className='bg-ligth'/>
+                  <HeaderLogin className="z-1"/>
+                  <div className='position-relative z-2 d-flex align-items-end ' style={{height:"100vh"}}>
                     <div className='fs-3 d-flex flex-column container mb-3 text-center text-md-start'>
                       <h1>{dados[0].title}</h1>
                       <div className='d-flex justify-content-around text-warning col-5 col-md-3 m-auto m-md-0 m-md-2'>
                         {avalicao()}
                       </div>
                       <div className='fs-3 d-flex mt-3 align-items-center justify-content-center justify-content-md-between col-5 m-auto m-md-0 mt-md-3 col-md-1'>
-                       <button className='btn btn-outline-warning fs-5 fw-bolder me-4'>LEIA+</button>
+                       <button className='btn btn-outline-warning fs-5 fw-bolder me-4' data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">LEIA+</button>
                        <a href="#" className='text-warning fs-1'><FontAwesomeIcon  icon={faPlayCircle}/></a>
                     </div>
                     </div>
@@ -83,6 +81,17 @@ const SobreConteudo = () => {
               </div> */}
 
               {/* <p className='text-light'>{dados[0].overview}</p> */}
+               
+              <div className="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel" style={{background:"#000"}}>
+                <div className="offcanvas-header">
+                  <h5 className="offcanvas-title text-light" id="offcanvasWithBothOptionsLabel"></h5>
+                  <button type="button" className="btn-close text-light z-2" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div className="offcanvas-body fw-light text-light">
+                  <p style={{textAlign:"justify",textIndent:"1.5em"}}>{dados[0].overview}</p>
+                </div>
+                <div className="gradient-overlay"></div>
+              </div>
 
               <div className="gradient-overlay"></div>
         </div>
