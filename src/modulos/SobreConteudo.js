@@ -28,12 +28,17 @@ const SobreConteudo = () => {
       const fetchData = async () => {
         try {
           // Primeira chamada para obter imdb_id
-          const response = await axios.get(`https://api.themoviedb.org/3/${(tipo === 'serie') ? 'tv' : 'movie'}/${idfilme}/external_ids?api_key=98ebed6ab42773fbcdf81f0a4760c179`);
+          const response = await axios.get(`https://api.themoviedb.org/3/${(tipo == 'tv') ? 'tv' : 'movie'}/${idfilme}/external_ids?api_key=98ebed6ab42773fbcdf81f0a4760c179`);
           const imdbId = response.data.imdb_id;
-    
-          // Segunda chamada para obter dados com base no imdb_id
+              // Segunda chamada para obter dados com base no imdb_id
           const conteudo = await axios.get(`https://api.themoviedb.org/3/find/${imdbId}?api_key=98ebed6ab42773fbcdf81f0a4760c179&&language=pt-BR&external_source=imdb_id`);
-          setDados(conteudo.data.movie_results);
+          
+          if(tipo == 'movie'){
+            setDados(conteudo.data.movie_results);
+          }else{
+            setDados(conteudo.data.tv_results);
+          }
+          
         } catch (error) {
           console.error('Erro ao buscar dados:', error);
         } finally {
@@ -45,7 +50,7 @@ const SobreConteudo = () => {
     
     }, [tipo, idfilme]); // Dependências do useEffect
     
-  
+
 
   return (
       <>
@@ -57,10 +62,10 @@ const SobreConteudo = () => {
         </div>
       ) : (
         <div className="col-12">
-            
+        <HeaderLogin />
               {/* <img src={`https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/${dados[0].backdrop_path}`} className='col-12 image' /> */}
               <div className='col-12 text-light' style={{height:"100vh",backgroundImage:`url(https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/${dados[0].backdrop_path})`,backgroundSize:"cover",backgroundPosition:"center"}}>
-                  <HeaderLogin className="position-relative z-5"/>
+                  
                   <div className='position-relative z-2 d-flex align-items-end ' style={{height:"100vh"}}>
                     <div className='fs-3 d-flex flex-column container mb-3 text-center text-md-start'>
                       <h1>{dados[0].title}</h1>

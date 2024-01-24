@@ -1,15 +1,15 @@
 
 import React from 'react';
-import HeaderLogin from '../modulos/HeaderLogin';
-import CarrosselPopulares from "../modulos/CarroselPopulares";
-import ListarTodos from "../modulos/ListarTodos";
+import HeaderLogin from './HeaderLogin';
+import CarrosselPopulares from "./CarroselPopulares";
+import ListarTodos from "./ListarTodos";
 import axios from 'axios';
 import { faSearch} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useParams} from 'react-router-dom';
 
 
-const Filmes = () => {
+const Series = () => {
 
 
     const [dados, setDados] = React.useState([]);
@@ -46,7 +46,7 @@ const Filmes = () => {
           try {
             
             // Substitua a URL abaixo pela sua API
-            const response = await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=98ebed6ab42773fbcdf81f0a4760c179&language=pt-BR&page=${pagina}`);  
+            const response = await axios.get(`https://api.themoviedb.org/3/tv/popular?api_key=98ebed6ab42773fbcdf81f0a4760c179&language=pt-BR&page=${pagina}`);  
             setDados(response.data.results);
             setPaginas(response.data.total_pages);
             
@@ -107,7 +107,7 @@ const Filmes = () => {
 
       <div className='container  pt-5 text-light d-flex  flex-wrap position-relative'>  
          <div className='col-12'>
-            <ListarTodos array={dados} tipo="movie"/>
+            <ListarTodos array={dados} tipo="tv"/>
          </div>
       </div>
 
@@ -138,4 +138,4 @@ const Filmes = () => {
   );
 };
 
-export default Filmes;
+export default Series;
