@@ -53,7 +53,7 @@ const Filmes = () => {
             var api = `https://api.themoviedb.org/3/movie/popular?api_key=98ebed6ab42773fbcdf81f0a4760c179&language=pt-BR&page=${pagina}`;
 
             if(buscar != null){
-              api = `https://api.themoviedb.org/3/search/movie?query=${buscar}&api_key=98ebed6ab42773fbcdf81f0a4760c179`;
+              api = ` https://api.themoviedb.org/3/search/movie?query=${buscar}&api_key=98ebed6ab42773fbcdf81f0a4760c179`;
             }
 
             const response = await axios.get(api);  
