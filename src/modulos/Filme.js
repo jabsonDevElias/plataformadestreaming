@@ -13,6 +13,7 @@ const Filmes = () => {
 
 
     const [dados, setDados] = React.useState([]);
+    const [buscar, setBuscar] = React.useState(null);
     const [loading, setLoading] = React.useState(true);
     const [paginas, setPaginas] = React.useState(1);
     const [pagina,setPagina] = React.useState(1);
@@ -46,7 +47,18 @@ const Filmes = () => {
           try {
             
             // Substitua a URL abaixo pela sua API
-            const response = await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=98ebed6ab42773fbcdf81f0a4760c179&language=pt-BR&page=${pagina}`);  
+
+            // https://api.themoviedb.org/3/search/tv?query=Percy&api_key=98ebed6ab42773fbcdf81f0a4760c179
+            
+            var api = `https://api.themoviedb.org/3/movie/popular?api_key=98ebed6ab42773fbcdf81f0a4760c179&language=pt-BR&page=${pagina}`;
+
+            if(buscar != null){
+              api = `https://api.themoviedb.org/3/search/movie?query=${buscar}&api_key=98ebed6ab42773fbcdf81f0a4760c179`;
+            }
+
+            const response = await axios.get(api);  
+
+
             setDados(response.data.results);
             setPaginas(response.data.total_pages);
             
@@ -60,7 +72,7 @@ const Filmes = () => {
     
         fetchData();
   
-    }, [pagina]);
+    }, [pagina,buscar]);
 
     var qtd_paginas = paginas; //qtd de paginas   
   
@@ -100,7 +112,7 @@ const Filmes = () => {
           <FontAwesomeIcon icon={faSearch}/>
         </div>
         <div className='col-12'>
-         <input type="text" className='form-control border border-0 text-light' placeholder='PESQUISAR...' style={{backgroundColor:'#000'}}/>
+         <input type="text" className='form-control border border-0 text-light' placeholder='PESQUISAR...' style={{backgroundColor:'#000'}} value={buscar} onChange={(e)=>setBuscar(e.target.value)}/>
         </div>
         </div>
       </div>
