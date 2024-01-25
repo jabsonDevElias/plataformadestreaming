@@ -13,7 +13,8 @@ const Filmes = () => {
 
 
     const [dados, setDados] = React.useState([]);
-    const [buscar, setBuscar] = React.useState(null);
+    const [buscar, setBuscar] = React.useState("");
+    const [api, setApi] = React.useState(null);
     const [loading, setLoading] = React.useState(true);
     const [paginas, setPaginas] = React.useState(1);
     const [pagina,setPagina] = React.useState(1);
@@ -50,10 +51,12 @@ const Filmes = () => {
 
             // https://api.themoviedb.org/3/search/tv?query=Percy&api_key=98ebed6ab42773fbcdf81f0a4760c179
             
-            var api = `https://api.themoviedb.org/3/movie/popular?api_key=98ebed6ab42773fbcdf81f0a4760c179&language=pt-BR&page=${pagina}`;
+            setApi(`https://api.themoviedb.org/3/movie/popular?api_key=98ebed6ab42773fbcdf81f0a4760c179&language=pt-BR&page=${pagina}`);
 
-            if(buscar != null){
-              api = `https://api.themoviedb.org/3/search/movie?query=${buscar}&api_key=98ebed6ab42773fbcdf81f0a4760c179`;
+            if(buscar.length > 0){
+              setApi(`https://api.themoviedb.org/3/search/movie?query=${buscar}&api_key=98ebed6ab42773fbcdf81f0a4760c179&language=pt-BR&page=${pagina}`);
+            }else{
+              setBuscar("");
             }
 
             const response = await axios.get(api);  
@@ -72,7 +75,8 @@ const Filmes = () => {
     
         fetchData();
   
-    }, [pagina,buscar]);
+    }, [pagina,buscar,api]);
+
 
     var qtd_paginas = paginas; //qtd de paginas   
   
