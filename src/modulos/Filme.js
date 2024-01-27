@@ -13,6 +13,7 @@ const Filmes = () => {
 
 
     const [dados, setDados] = React.useState([]);
+    const [dadosCarrossel, setDadosCarrossel] = React.useState([]);
     const [buscar, setBuscar] = React.useState("");
     const [api, setApi] = React.useState(null);
     const [loading, setLoading] = React.useState(true);
@@ -23,26 +24,32 @@ const Filmes = () => {
     const [num_pagina,setNumPagina] = React.useState(15);
 
     const { idfilme } = useParams();
+    
+    React.useEffect(() => {
+      //PEGAR TODOS OS DADOS
   
-    // const criarLista = () => {
-    //   const lista = [];
-      
-    //   for (let i = 1; i <= paginas; i++) {
-    //     lista.push(<li key={i} class="page-item"><a class="page-link" href="#">{i}</a></li>);     
-    //   }
+        const fetchData = async () => {
+          try {
+          
+
+            const response = await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=98ebed6ab42773fbcdf81f0a4760c179&language=pt-BR&page=${pagina}`);  
+
+            setDadosCarrossel(response.data.results);
+            
+
+          } catch (error) {
+            console.error('Erro ao buscar dados:', error);
+          } finally {
+            setLoading(false);
+          }
+        };
+    
+        fetchData();
   
-    //   return lista;
-    // };
+    }, [dadosCarrossel]);
   
     React.useEffect(() => {
       //PEGAR TODOS OS DADOS
-      // axios.get('https://api.themoviedb.org/3/movie/popular?api_key=98ebed6ab42773fbcdf81f0a4760c179&language=pt-BR&page=1')
-      //   .then(response => {
-      //     setDados(response.data.results);
-      //   })
-      //   .catch(erro => {
-      //     console.error('Erro ao buscar dados:', erro);
-      //   });
   
         const fetchData = async () => {
           try {
@@ -106,7 +113,7 @@ const Filmes = () => {
       <div className='container  pt-5 text-light d-flex ps-5 flex-wrap position-relative'>  
          <h3 className='col-12 mt-5'>Últimos Lançamentos</h3>  
          <div className='col-12'>
-            <CarrosselPopulares array={dados}/>
+            <CarrosselPopulares array={dadosCarrossel}/>
          </div>
       </div>
 
