@@ -13,6 +13,9 @@ const Series = () => {
 
 
     const [dados, setDados] = React.useState([]);
+    const [dadosCarrossel, setDadosCarrossel] = React.useState([]);
+    const [buscar, setBuscar] = React.useState("");
+    const [api, setApi] = React.useState(null);
     const [loading, setLoading] = React.useState(true);
     const [paginas, setPaginas] = React.useState(1);
     const [pagina,setPagina] = React.useState(1);
@@ -22,19 +25,32 @@ const Series = () => {
 
     const { idfilme } = useParams();
   
-    // const criarLista = () => {
-    //   const lista = [];
-      
-    //   for (let i = 1; i <= paginas; i++) {
-    //     lista.push(<li key={i} class="page-item"><a class="page-link" href="#">{i}</a></li>);     
-    //   }
+    React.useEffect(() => {
+    //PEGAR TODOS OS DADOS
   
-    //   return lista;
-    // };
+        const fetchData = async () => {
+          try {
+          
+
+            const response = await axios.get(`https://api.themoviedb.org/3/tv/popular?api_key=98ebed6ab42773fbcdf81f0a4760c179&language=pt-BR&page=${pagina}`);  
+
+            setDadosCarrossel(response.data.results);
+            
+
+          } catch (error) {
+            console.error('Erro ao buscar dados:', error);
+          } finally {
+            setLoading(false);
+          }
+        };
+    
+        fetchData();
+  
+    }, [dadosCarrossel]);
   
     React.useEffect(() => {
       //PEGAR TODOS OS DADOS
-      // axios.get('https://api.themoviedb.org/3/movie/popular?api_key=98ebed6ab42773fbcdf81f0a4760c179&language=pt-BR&page=1')
+      // axios.get('https://api.themoviedb.org/3/tv/popular?api_key=98ebed6ab42773fbcdf81f0a4760c179&language=pt-BR&page=1')
       //   .then(response => {
       //     setDados(response.data.results);
       //   })
@@ -46,7 +62,20 @@ const Series = () => {
           try {
             
             // Substitua a URL abaixo pela sua API
-            const response = await axios.get(`https://api.themoviedb.org/3/tv/popular?api_key=98ebed6ab42773fbcdf81f0a4760c179&language=pt-BR&page=${pagina}`);  
+            
+            // https://api.themoviedb.org/3/search/tv?query=Percy&api_key=98ebed6ab42773fbcdf81f0a4760c179
+            
+            setApi(`https://api.themoviedb.org/3/tv/popular?api_key=98ebed6ab42773fbcdf81f0a4760c179&language=pt-BR&page=${pagina}`);
+
+            if(buscar.length > 0){
+              setApi(`https://api.themoviedb.org/3/search/tv?query=${buscar}&api_key=98ebed6ab42773fbcdf81f0a4760c179&language=pt-BR&page=${pagina}`);  
+            }else{
+              setBuscar("");
+            }
+
+            const response = await axios.get(api);  
+
+
             setDados(response.data.results);
             setPaginas(response.data.total_pages);
             
@@ -60,7 +89,8 @@ const Series = () => {
     
         fetchData();
   
-    }, [pagina]);
+    }, [pagina,buscar,api]);
+
 
     var qtd_paginas = paginas; //qtd de paginas   
   
@@ -74,6 +104,12 @@ const Series = () => {
         break;
       } 
       
+    }
+
+//EVITA QUE A PAGINAÇÃO FIQUE NEGATIVA
+    if(pagina <= 0){
+      setPagina(1);
+      setCount(1);
     }
 
   return (
@@ -90,7 +126,7 @@ const Series = () => {
       <div className='container  pt-5 text-light d-flex ps-5 flex-wrap position-relative'>  
          <h3 className='col-12 mt-5'>Últimos Lançamentos</h3>  
          <div className='col-12'>
-            <CarrosselPopulares array={dados}/>
+            <CarrosselPopulares array={dadosCarrossel}/>
          </div>
       </div>
 
@@ -100,7 +136,7 @@ const Series = () => {
           <FontAwesomeIcon icon={faSearch}/>
         </div>
         <div className='col-12'>
-         <input type="text" className='form-control border border-0 text-light' placeholder='PESQUISAR...' style={{backgroundColor:'#000'}}/>
+         <input type="text" className='form-control border border-0 text-light' placeholder='PESQUISAR...' style={{backgroundColor:'#000'}} value={buscar} onChange={(e)=>setBuscar(e.target.value)}/>
         </div>
         </div>
       </div>
@@ -113,6 +149,8 @@ const Series = () => {
 
 
       <div className='col-12 d-flex justify-content-center pt-5 pb-4'>
+{
+        paginacao.length > 1 ? (
       <nav aria-label="Page navigation">
         <ul class="pagination pagination-warning">
           <li class="page-item">
@@ -131,6 +169,11 @@ const Series = () => {
           </li>
         </ul>
       </nav>
+):(
+          <></>
+        )
+       }
+
       </div>
       </>
       )}

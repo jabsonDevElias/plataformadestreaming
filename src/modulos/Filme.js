@@ -143,7 +143,6 @@ const Filmes = () => {
        
 
       <div className='col-12 d-flex justify-content-center pt-5 pb-4'>
-      <h1 className='text-ligth'>{pagina}</h1>
        {
         paginacao.length > 1 ? (
           <nav aria-label="Page navigation">
