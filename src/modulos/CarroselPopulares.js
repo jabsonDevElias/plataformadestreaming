@@ -19,9 +19,9 @@ function CarrosselPopulares(props){
         <Slider {...settings}>
         
         {props.array.slice(0,20).map(item => {
-            return <div className='card-conteudo col-2'>
+            return <a href={`conteudo/${props.tipo}/${item.id}`} className='card-conteudo col-2'>
                 <img src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} className='col-12 rounded rounded-2'/>
-            </div>
+            </a>
         })} 
 
         {/* Adicione mais slides conforme necessário */}

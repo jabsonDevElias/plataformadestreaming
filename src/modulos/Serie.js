@@ -122,11 +122,11 @@ const Series = () => {
         </div>
       ) : (
       <>
-      <HeaderLogin/>
+      <HeaderLogin tipo="series"/>
       <div className='container  pt-5 text-light d-flex ps-5 flex-wrap position-relative'>  
          <h3 className='col-12 mt-5'>Últimos Lançamentos</h3>  
          <div className='col-12'>
-            <CarrosselPopulares array={dadosCarrossel}/>
+            <CarrosselPopulares array={dadosCarrossel} tipo="tv"/>
          </div>
       </div>
 

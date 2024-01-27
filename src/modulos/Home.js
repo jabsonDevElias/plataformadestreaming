@@ -53,10 +53,10 @@ function App() {
       ) : (
         <div className='tela-menu d-flex flex-wrap'>
 
-          <HeaderLogin/>
+          <HeaderLogin tipo="/"/>
           <Carrossel array={dados}/>
           <div className='col-12 ps-5'>
-             <CarrosselPopulares array={dados}/>
+             <CarrosselPopulares array={dados} tipo="movie"/>
           </div>
 
         </div>
