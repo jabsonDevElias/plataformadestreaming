@@ -126,27 +126,35 @@ const Filmes = () => {
             <ListarTodos array={dados} tipo="movie"/>
          </div>
       </div>
-
+       
+       
 
       <div className='col-12 d-flex justify-content-center pt-5 pb-4'>
-      <nav aria-label="Page navigation">
-        <ul class="pagination pagination-warning">
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Previous" onClick={()=>{if(num_pagina > 5){setNumPagina(num_pagina-1);setCount(coun_pagina-1);setPagina(pagina-1)}}}>
-              <span aria-hidden="true">&laquo;</span>
-            </a>
-          </li>
-        {
-          paginacao.map((item,key)=>
-          <li key={key} class={(item === pagina)?"page-item active bg-warning":"page-item"}><a class={(item === pagina)?"page-link active bg-warning border border-0":"page-link"} href="#" onClick={()=>setPagina(item)} value={item}>{item}</a></li>          )
-        }
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Next" onClick={()=>{setNumPagina(num_pagina+1);setCount(coun_pagina+1);setPagina(pagina+1)}}>
-              <span aria-hidden="true">&raquo;</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
+       {
+        paginacao.length > 1 ? (
+          <nav aria-label="Page navigation">
+          <ul class="pagination pagination-warning">
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Previous" onClick={()=>{if(num_pagina > 5){setNumPagina(num_pagina-1);setCount(coun_pagina-1);setPagina(pagina-1)}}}>
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+          {
+            paginacao.map((item,key)=>
+            <li key={key} class={(item === pagina)?"page-item active bg-warning":"page-item"}><a class={(item === pagina)?"page-link active bg-warning border border-0":"page-link"} href="#" onClick={()=>setPagina(item)} value={item}>{item}</a></li>          )
+          }
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Next" onClick={()=>{setNumPagina(num_pagina+1);setCount(coun_pagina+1);setPagina(pagina+1)}}>
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        ):(
+          <></>
+        )
+       }
+
       </div>
       </>
       )}
