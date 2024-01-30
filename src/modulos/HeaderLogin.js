@@ -19,7 +19,7 @@ function HeaderLogin(props) {
             <a href="/series" className={`col-2  text-center ${(props.tipo == "series")?"text-warning":"text-light"}`}>
                 <FontAwesomeIcon icon={faTv} />            
             </a>
-            <a href="/" className={`col-2  text-center ${(props.tipo == "")?"text-warning":"text-light"}`}>
+            <a href="/perfil" className={`col-2  text-center ${(props.tipo == "perfil")?"text-warning":"text-light"}`}>
                 <FontAwesomeIcon icon={faSmile} />            
             </a>
         </div>
