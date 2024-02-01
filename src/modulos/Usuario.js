@@ -41,6 +41,10 @@ function Usuario() {
                   </div>
                </div>
 
+               <div className='col-12 mt-4'>
+                  <button className='btn btn-warning'>Salvar</button>
+               </div>
+
 
             </div>
 
