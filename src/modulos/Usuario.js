@@ -1,7 +1,7 @@
 import React from 'react';
 import HeaderLogin from './HeaderLogin';
 import defaultImg from './img/default.png';
-import { faBell, faGear, faInfoCircle, faPenToSquare, faStar, faTv } from '@fortawesome/free-solid-svg-icons';
+import { faBell, faGear, faInfoCircle, faPenToSquare, faPhone, faStar, faTv } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
@@ -10,23 +10,42 @@ function Usuario() {
    return (
       <>
          <HeaderLogin tipo="perfil" />
-         <div className='container  pt-5 text-light d-flex ps-5 flex-wrap position-relative'>
-            <div className='col-6 d-flex align-items-center mt-5'>
-               <img src={defaultImg} class="col-2 rounded-circle" alt="..." />
-               <div className='col-12 ps-3'>
-                  <h2>Nome do Perfil</h2>
-                  <ul className='col-3 d-flex justify-content-between text-start p-0'>
-                     <li className='col-4'><a href='#' className='text-light'><FontAwesomeIcon icon={faGear} /></a></li>
-                     <li className='col-4'><a href='#' className='text-light'><FontAwesomeIcon icon={faPenToSquare} /></a></li>
-                     <li className='col-4'><a href='#' className='text-light'><FontAwesomeIcon icon={faBell} /></a></li>
-                  </ul>
+         <div className='container  pt-5 text-light d-flex ps-5 flex-wrap justify-content-between'>
+            <div className='col-5 d-content  mt-5'>
+               <div className='col-12 d-flex align-items-center'>
+                  <img src={defaultImg} class="col-2 rounded-circle" alt="..." />
+                  <div className='col-12 ps-3'>
+
+                     <h2>Nome do Perfil</h2>
+                     <ul className='col-3 d-flex justify-content-between text-start p-0'>
+                        <li className='col-4'><a href='#' className='text-light'><FontAwesomeIcon icon={faGear} /></a></li>
+                        <li className='col-4'><a href='#' className='text-light'><FontAwesomeIcon icon={faPenToSquare} /></a></li>
+                        <li className='col-4'><a href='#' className='text-light'><FontAwesomeIcon icon={faBell} /></a></li>
+                     </ul>
+
+
+                  </div>
+               </div>
+
+               <div className='col-12 mt-4'>
+                  <div class="input-group">
+                     <span class="input-group-text" id="basic-addon1">@</span>
+                     <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
+                  </div>
+               </div>
+
+               <div className='col-12 mt-4'>
+                  <div class="input-group">
+                     <span class="input-group-text" id="basic-addon1"><FontAwesomeIcon icon={faPhone}/></span>
+                     <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
+                  </div>
                </div>
 
 
             </div>
 
             <div className='d-flex flex-wrap col-6 mt-5'>
-               <h5><FontAwesomeIcon icon={faStar}/> Favoritos</h5>
+               <h5><FontAwesomeIcon icon={faStar} /> Favoritos</h5>
                <table class="table">
                   <tbody>
                      <tr>
@@ -51,7 +70,7 @@ function Usuario() {
                      </tr>
                   </tbody>
                </table>
-               <h5><FontAwesomeIcon icon={faTv}/> Telas</h5>
+               <h5><FontAwesomeIcon icon={faTv} /> Telas</h5>
                <table class="table">
                   <tbody>
                      <tr>
