@@ -1,9 +1,9 @@
 import React from 'react';
-import HeaderLogin from './HeaderLogin';
-import defaultImg from './img/default.png';
+import HeaderLogin from '../HeaderLogin';
+import defaultImg from '../img/default.png';
 import { faBell, faGear, faInfoCircle, faPenToSquare, faPhone, faStar, faTv } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function Usuario() {
 
@@ -29,22 +29,17 @@ function Usuario() {
 
                <div className='col-12 mt-4'>
                   <div class="input-group">
-                     <span class="input-group-text" id="basic-addon1">@</span>
-                     <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
+                     <span class="input-group-text bg-warning" id="basic-addon1">@</span>
+                     <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" disabled/>
                   </div>
                </div>
 
                <div className='col-12 mt-4'>
                   <div class="input-group">
-                     <span class="input-group-text" id="basic-addon1"><FontAwesomeIcon icon={faPhone}/></span>
-                     <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
+                     <span class="input-group-text bg-warning" id="basic-addon1"><FontAwesomeIcon icon={faPhone}/></span>
+                     <input type="text" class="form-control border" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" disabled/>
                   </div>
                </div>
-
-               <div className='col-12 mt-4'>
-                  <button className='btn btn-warning'>Salvar</button>
-               </div>
-
 
             </div>
 
@@ -105,5 +100,6 @@ function Usuario() {
    );
 
 }
+
 
 export default Usuario;

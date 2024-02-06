@@ -3,16 +3,21 @@
 
 import React from 'react';
 import axios from 'axios';
-import HeaderLogin from './HeaderLogin';
+import HeaderLogin from '../HeaderLogin';
 import { useParams} from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClose, faPlayCircle, faStar } from '@fortawesome/free-solid-svg-icons';
 
 
-const avalicao = () => {
+const avaliacao = (score) => {
   const tags = [];
     for (let index = 0; index < 5; index++) {
-      tags.push(<FontAwesomeIcon icon={faStar}/>);   
+      const maxScore = 10;
+      const starPercentage = (score / maxScore) * 100;
+      const starValue = index + 1;
+      const filled = starValue <= score / 2;
+
+      tags.push(<div className='col-2'><FontAwesomeIcon icon={faStar} className={`${filled ? 'text-warning' : 'text-dark'}`}/></div>);   
     }
 
     return tags;
@@ -49,8 +54,6 @@ const SobreConteudo = () => {
       fetchData();
     
     }, [tipo, idfilme]); // Dependências do useEffect
-    
-
 
   return (
       <>
@@ -66,11 +69,11 @@ const SobreConteudo = () => {
               {/* <img src={`https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/${dados[0].backdrop_path}`} className='col-12 image' /> */}
               <div className='col-12 text-light' style={{height:"100vh",backgroundImage:`url(https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/${dados[0].backdrop_path})`,backgroundSize:"cover",backgroundPosition:"center"}}>
                   
-                  <div className='position-relative z-2 d-flex align-items-end ' style={{height:"100vh"}}>
+                  <div className='position-relative z-1 d-flex align-items-end ' style={{height:"100vh"}}>
                     <div className='fs-3 d-flex flex-column container mb-3 text-center text-md-start'>
                       <h1>{dados[0].title}</h1>
-                      <div className='d-flex justify-content-around text-warning col-5 col-md-3 m-auto m-md-0 m-md-2'>
-                        {avalicao()}
+                      <div className='d-flex justify-content-between text-warning col-5 col-md-3 m-auto m-md-0'>
+                        {avaliacao(dados[0].vote_average)}
                       </div>
                       <div className='fs-3 d-flex mt-3 align-items-center justify-content-center justify-content-md-between col-5 m-auto m-md-0 mt-md-3 col-md-1'>
                        <button className='btn btn-outline-warning fs-5 fw-bolder me-4' data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">LEIA+</button>
