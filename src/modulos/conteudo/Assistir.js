@@ -19,7 +19,7 @@ function Watchnow() {
             <div class="ratio ratio-21x9">
                 <iframe src={`https://embed.warezcdn.com/${tipo_definitivo}/${imdb}`} title="YouTube video" allowfullscreen></iframe>
             </div>
-            <div class="gradient-overlay"></div>
+            {/* <div class="gradient-overlay"></div> */}
         </>
     );
 
