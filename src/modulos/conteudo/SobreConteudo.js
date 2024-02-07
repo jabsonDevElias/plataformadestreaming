@@ -34,7 +34,8 @@ const SobreConteudo = () => {
         try {
           // Primeira chamada para obter imdb_id
           const response = await axios.get(`https://api.themoviedb.org/3/${(tipo == 'tv') ? 'tv' : 'movie'}/${idfilme}/external_ids?api_key=98ebed6ab42773fbcdf81f0a4760c179`);
-          const imdbId = response.data.imdb_id;
+          var imdbId = response.data.imdb_id;
+          setImdb(imdbId);
               // Segunda chamada para obter dados com base no imdb_id
           const conteudo = await axios.get(`https://api.themoviedb.org/3/find/${imdbId}?api_key=98ebed6ab42773fbcdf81f0a4760c179&&language=pt-BR&external_source=imdb_id`);
           
@@ -54,6 +55,7 @@ const SobreConteudo = () => {
       fetchData();
     
     }, [tipo, idfilme]); // Dependências do useEffect
+
 
   return (
       <>
@@ -77,7 +79,7 @@ const SobreConteudo = () => {
                       </div>
                       <div className='fs-3 d-flex mt-3 align-items-center justify-content-center justify-content-md-between col-5 m-auto m-md-0 mt-md-3 col-md-1'>
                        <button className='btn btn-outline-warning fs-5 fw-bolder me-4' data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">LEIA+</button>
-                       <a href="#" className='text-warning fs-1'><FontAwesomeIcon  icon={faPlayCircle}/></a>
+                       <a href={`/watchnow/${tipo}/${imdb}`} className='text-warning fs-1'><FontAwesomeIcon  icon={faPlayCircle}/></a>
                     </div>
                     </div>
  

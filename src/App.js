@@ -7,6 +7,7 @@ import Filme from './modulos/Filme';
 import Usuario from './modulos/usuario/Usuario';
 import SobreConteudo from './modulos/conteudo/SobreConteudo.js';
 import Series from './modulos/Serie.js';
+import Watchnow from './modulos/conteudo/Assistir.js'
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
          <Route path="/series" element={<Series/>} />
          <Route path="/perfil" element={<Usuario/>} />
          <Route path="/conteudo/:tipo/:idfilme" element={<SobreConteudo/>}/>
+         <Route path="/watchnow/:tipo/:imdb" element={<Watchnow/>} />
       </Routes>
     </Router>
   );
