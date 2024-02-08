@@ -19,10 +19,10 @@ Em Desenvolvimento
 - Bootstrap
 <br>
 - Axios
-<br>
+<!-- <br>
 - [www.themoviedb.org](www.themoviedb.org)
 <br>
-- [www.themoviedb.org](http://warezcdn.com/)
+- [www.themoviedb.org](http://warezcdn.com/) -->
 
 ### `Galeria de Captura de Telas`
 
