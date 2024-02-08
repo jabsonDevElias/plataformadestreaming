@@ -32,15 +32,15 @@ Em Desenvolvimento
    </div>
 
    <div style="width:50%;">
-     <img src="galeria/filme.png" style="border-radius:5px"/>
+     <img src="galeria/Filme.png" style="border-radius:5px"/>
    </div>
 
    <div style="width:50%;">
-     <img src="galeria/series.png" style="border-radius:5px"/>
+     <img src="galeria/Series.png" style="border-radius:5px"/>
    </div>
 
    <div style="width:100%;">
-     <img src="galeria/conteudo.png" style="border-radius:5px"/>
+     <img src="galeria/Conteudo.png" style="border-radius:5px"/>
    </div>
     
     
