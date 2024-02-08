@@ -31,11 +31,11 @@ Em Desenvolvimento
      <img src="galeria/Home.png" style="border-radius:5px"/>
    </div>
 
-   <div style="width:50%;">
+   <div style="width:40%;">
      <img src="galeria/Filme.png" style="border-radius:5px"/>
    </div>
 
-   <div style="width:50%;">
+   <div style="width:40%;">
      <img src="galeria/Series.png" style="border-radius:5px"/>
    </div>
 
