@@ -13,6 +13,7 @@ Em Desenvolvimento
 ### `O que foi Usado?`
 
 - React
+- Node
 <br>
 - Node
 <br>
