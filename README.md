@@ -14,11 +14,7 @@ Em Desenvolvimento
 
 - React
 - Node
-<br>
-- Node
-<br>
 - Bootstrap
-<br>
 - Axios
 <!-- <br>
 - [www.themoviedb.org](www.themoviedb.org)
